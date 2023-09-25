@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Main{% endblock %}
+{% block content %}
+    <section class="categories">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    <div class="categories__item categories__large__item set-bg"
+                         data-setbg="{% static 'img/pink-popcorn-background.jpg' %}">
+                        <div class="categories__text">
+                            <h1>Make Your Top 100</h1>
+                            <p>Create Your Own Top`s Movies and share it with World
+                                Lets See what others think about your bests movies</p>
+                            <a href="#">Check it now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="{% static 'img/1.jpg' %}">
+                                <div class="categories__text">
+                                    <h4>Coming Soon</h4>
+                                    <p>358 items</p>
+                                    <a href="#">Check now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="{% static 'img/2.jpg' %}">
+                                <div class="categories__text">
+                                    <h4>Recently Added</h4>
+                                    <p>273 items</p>
+                                    <a href="#">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="{% static 'img/5.jpg' %}">
+                                <div class="categories__text">
+                                    <h4>Box Office</h4>
+                                    <p>159 items</p>
+                                    <a href="#">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                            <div class="categories__item set-bg" data-setbg="{% static 'img/3.jpg' %}">
+                                <div class="categories__text">
+                                    <h4>Up coming festivals</h4>
+                                    <p>792 items</p>
+                                    <a href="#">Shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="section-title">
+                        <h4>New product</h4>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8">
+                    <ul class="filter__controls">
+                        <li class="active" data-filter="*">All</li>
+                        <li data-filter=".women">Top likes</li>
+                        <li data-filter=".men">Most Review</li>
+                        <li data-filter=".kid">Recently added</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row property__gallery">
+                {% for movie in movie_list %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix women">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="{{ movie.image }}">
+                                <ul class="product__hover">
+                                    <li><a href="{{ movie.image }}" class="image-popup"><span
+                                            class="arrow_expand"></span></a></li>
+                                    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                    <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6><a href="#">{{ movie.title }}</a></h6>
+
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="product__price">{{ movie.release_year }}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% if movie_list %}
+    <section class="banner set-bg" data-setbg="{{ movie_list.0.image }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-8 m-auto">
+                    <div class="banner__slider owl-carousel">
+                        <div class="banner__item">
+                            <div class="banner__text">
+                                <span>{{ movie_list.0.title }}</span>
+                                <h1>The Project Jacket</h1>
+                                <a href="#">Shop now</a>
+                            </div>
+                        </div>
+                        <div class="banner__item">
+                            <div class="banner__text">
+                                <span>The Chloe Collection</span>
+                                <h1>The Project Jacket</h1>
+                                <a href="#">Shop now</a>
+                            </div>
+                        </div>
+                        <div class="banner__item">
+                            <div class="banner__text">
+                                <span>The Chloe Collection</span>
+                                <h1>The Project Jacket</h1>
+                                <a href="#">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}
